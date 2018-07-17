@@ -24,23 +24,12 @@ def connect_to_db(domain_name):
         print("\n\033[1;31m[!] Unable to connect to the database\n\033[1;m")
     return cursor
 
-def get_unique_domains(cursor, domain_name):
-    unique_domains = []
+def print_ca_stats(cursor, domain_name):
     print("\n\033[1;94mCertificate Authority(CA) stats for the domain - {}\033[1;m".format(domain_name))
     print("\n\033[1;93m{:56} | {}".format("Certificate Authority(CA)", "No: of certs issued\033[1;m"))
     print("\033[1;93m_________________________________________________________|______\033[1;m")
     for result in cursor.fetchall():
         print(" {0:55} \033[1;93m|\033[1;m {1}".format(result[0].split('=')[-1], result[1]))
-        matches=re.findall(r"\'(.+?)\'",str(result))
-        for subdomain in matches:
-            if subdomain not in unique_domains:
-                if ".{}".format(domain_name) in subdomain:
-                    unique_domains.append(subdomain)
-    return unique_domains
-
-def print_unique_domains(unique_domains):
-    for unique_domain in sorted(unique_domains):
-        print(unique_domain)
 
 def get_domain_name():
     if len(sys.argv) <= 1:
@@ -52,5 +41,4 @@ def get_domain_name():
 if __name__ == '__main__':
     domain_name = get_domain_name()
     cursor = connect_to_db(domain_name)
-    unique_domains = get_unique_domains(cursor, domain_name)
-    print_unique_domains(unique_domains)
+    print_ca_stats(cursor, domain_name)
