@@ -8,5 +8,11 @@ Quick dirty utilities I scribbled that dig through Certificate Transparency logs
 
 ## Installing Python dependencies
 
+Only third-party library needed is [psycopg2](initd.org/psycopg/docs/)
+
 1. You need to install [pipenv](https://docs.pipenv.org/)
 2. Run `pipenv install` in the cloned directory to install all the Python package dependencies
+
+## Screenshots
+
+![ca-stats](imgs/ca_stats.png)
