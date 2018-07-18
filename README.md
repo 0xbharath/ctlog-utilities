@@ -17,3 +17,5 @@ Only third-party library needed is [psycopg2](initd.org/psycopg/docs/)
 ## Screenshots
 
 ![ca-stats](imgs/ca_stats.png)
+
+![ca-by-certs](imgs/ca_by_certs.png)
