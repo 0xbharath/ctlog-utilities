@@ -4,7 +4,8 @@ Quick dirty utilities I scribbled that dig through Certificate Transparency logs
 
 
 1. **crtsh_ca_stats.py** - For a given domain, the script returns all the Certificate Authority(CA) names and number of SSL/TLS certs the CA issued for that domain
-2. **emails_from_ctlogs.py** - For a given domain, the script extracts emails from SSL/TLS certs that are part of Certificate Transparency logs
+2. **ca_by_certs.py** - Returns all the CAs listed in CT Logs in the order of total number of certs issued ever. You can limit number of CAs printed by passing a number as argument to Python script
+3. **emails_from_ctlogs.py** - For a given domain, the script extracts emails from SSL/TLS certs that are part of Certificate Transparency logs
 
 ## Installing Python dependencies
 
