@@ -27,7 +27,7 @@ def connect_to_db(domain_name):
 def print_ca_stats(cursor, domain_name):
     print("\n\033[1;94mCertificate Authority(CA) stats for the domain - {}\033[1;m".format(domain_name))
     print("\n\033[1;93m{:56} | {}".format("Certificate Authority(CA)", "No: of certs issued\033[1;m"))
-    print("\033[1;93m_________________________________________________________|______\033[1;m")
+    print("\033[1;93m{}|{}\033[1;m".format("_"*57, "_"*20))
     for result in cursor.fetchall():
         print(" {0:55} \033[1;93m|\033[1;m {1}".format(result[0].split('=')[-1], result[1]))
 
