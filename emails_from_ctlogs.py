@@ -18,6 +18,7 @@ DB_USER = 'guest'
 def connect_to_db(domain_name):
     try:
         conn = psycopg2.connect("dbname={0} user={1} host={2}".format(DB_NAME, DB_USER, DB_HOST))
+        conn.autocommit = True
         cursor = conn.cursor()
         cursor.execute("SELECT ci.NAME_VALUE NAME_VALUE FROM certificate_identity ci WHERE ci.NAME_TYPE = 'emailAddress' AND reverse(lower(ci.NAME_VALUE)) LIKE reverse(lower('%{}'));".format(domain_name))
     except:

@@ -18,6 +18,7 @@ DB_USER = 'guest'
 def connect_to_db(limit):
     try:
         conn = psycopg2.connect("dbname={0} user={1} host={2}".format(DB_NAME, DB_USER, DB_HOST))
+        conn.autocommit = True
         cursor = conn.cursor()
         cursor.execute("select name, CAST(no_of_certs_issued as int) as d from ca ORDER BY d desc LIMIT {};".format(limit))
     except:

@@ -18,6 +18,7 @@ DB_USER = 'guest'
 def connect_to_db(domain_name):
     try:
         conn = psycopg2.connect("dbname={0} user={1} host={2}".format(DB_NAME, DB_USER, DB_HOST))
+        conn.autocommit = True
         cursor = conn.cursor()
         cursor.execute("SELECT distinct  ca.name, COUNT(*) count FROM certificate_identity ci, ca ca WHERE ci.NAME_TYPE = 'dNSName' AND reverse(lower(ci.NAME_VALUE)) LIKE reverse(lower('%{0}')) AND ca.id=ci.issuer_ca_id GROUP BY ca.name ORDER BY count desc;".format(domain_name))
     except:
